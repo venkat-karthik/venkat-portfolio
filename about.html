@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Venkat Karthik</title>
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  
+  <!-- Google Fonts - Same as home page -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #1a1a1a;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255, 165, 0, 0.2);
+    }
+    
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo-text {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffa500;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .logo-text span {
+      color: #ffffff;
+    }
+    
+    .navbar {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    .navbar a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar a:hover {
+      color: #ffa500;
+    }
+    
+    /* Main Content */
+    main {
+      padding-top: 100px;
+      min-height: 100vh;
+    }
+    
+    .hero {
+      text-align: center;
+      padding: 80px 0;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      color: #ffa500;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .section-text {
+      font-size: 1.2rem;
+      color: #cccccc;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Gamified Sections */
+    .gamified-section {
+      padding: 60px 0;
+      margin-bottom: 40px;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #ffa500;
+      margin-bottom: 50px;
+      text-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    /* Profile Card */
+    .profile-card {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+      border-radius: 25px;
+      padding: 40px;
+      margin: 0 auto 80px;
+      max-width: 800px;
+      border: 2px solid rgba(255, 165, 0, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .profile-avatar {
+      position: relative;
+    }
+    
+    .avatar-ring {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      padding: 5px;
+      position: relative;
+    }
+    
+    .avatar-image {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #2a2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ffa500;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .status-indicator {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #00ff88;
+      border: 4px solid #2a2a2a;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+    }
+    
+    .profile-info {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .profile-name {
+      font-size: 2.5rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .profile-title {
+      font-size: 1.3rem;
+      color: #ffa500;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    .profile-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .stat-item {
+      text-align: center;
+      background: rgba(255, 165, 0, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 165, 0, 0.3);
+    }
+    
+    .stat-number {
+      display: block;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffa500;
+      margin-bottom: 5px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: #cccccc;
+    }
+    
+    /* Achievement Badges */
+    .badges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .badge-card {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      border: 2px solid #ffa500;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .badge-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .badge-card:hover::before {
+      left: 100%;
+    }
+    
+    .badge-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(255, 165, 0, 0.2);
+    }
+    
+    .badge-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    
+    .badge-card h3 {
+      color: #ffa500;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .badge-card p {
+      color: #cccccc;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    
+    .progress-bar {
+      background: #444444;
+      border-radius: 10px;
+      height: 10px;
+      overflow: hidden;
+      margin: 15px 0;
+    }
+    
+    .progress {
+      height: 100%;
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      border-radius: 10px;
+      transition: width 2s ease;
+    }
+    
+    /* Enhanced Skills Tree */
+    .skills-tree {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+    
+    .skill-branch {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+      border-radius: 25px;
+      padding: 35px;
+      border: 2px solid rgba(255, 165, 0, 0.4);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-branch::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ffa500, #ff8c00, #ffa500);
+      background-size: 200% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    .branch-title {
+      color: #ffa500;
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      text-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+    }
+    
+    .branch-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #ffa500, #ff8c00);
+      border-radius: 2px;
+    }
+    
+    .skill-nodes {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    
+    .skill-node {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 18px;
+      background: linear-gradient(135deg, #333333 0%, #2a2a2a 100%);
+      border-radius: 15px;
+      border-left: 4px solid #ffa500;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-node::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .skill-node:hover::before {
+      left: 100%;
+    }
+    
+    .skill-node:hover {
+      background: linear-gradient(135deg, #3a3a3a 0%, #333333 100%);
+      transform: translateX(12px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(255, 165, 0, 0.2);
+    }
+    
+    .node-icon {
+      font-size: 2rem;
+      filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.3));
+    }
+    
+    .node-label {
+      color: #ffffff;
+      flex: 1;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .mastery-level {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .skill-node.expert .mastery-level {
+      background: linear-gradient(45deg, #00ff88, #00cc6a);
+      color: #000000;
+    }
+    
+    .skill-node.advanced .mastery-level {
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      color: #ffffff;
+    }
+    
+    .skill-node.intermediate .mastery-level {
+      background: linear-gradient(45deg, #ffff00, #ffd700);
+      color: #000000;
+    }
+    
+    .skill-node.learning .mastery-level {
+      background: linear-gradient(45deg, #ff6b6b, #ff5252);
+      color: #ffffff;
+    }
+    
+    /* Timeline */
+    .timeline {
+      position: relative;
+      margin-top: 40px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #ffa500, #ff8c00);
+    }
+    
+    .timeline-item {
+      display: flex;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .timeline-marker {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 30px;
+      z-index: 2;
+      box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+    }
+    
+    .marker-icon {
+      font-size: 1.5rem;
+    }
+    
+    .timeline-content {
+      flex: 1;
+      background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+      border-radius: 15px;
+      padding: 25px;
+      border: 1px solid rgba(255, 165, 0, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-content:hover {
+      transform: translateX(15px);
+      box-shadow: 0 15px 40px rgba(255, 165, 0, 0.2);
+    }
+    
+    .timeline-content h3 {
+      color: #ffa500;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .project-role {
+      color: #00ff88;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    .project-tech {
+      color: #ffa500;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+    
+    .project-desc {
+      color: #cccccc;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+    
+    .project-status {
+      background: #00ff88;
+      color: #000000;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      display: inline-block;
+    }
+    
+    /* Info Cards */
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+    
+    .info-card {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+      border-radius: 25px;
+      padding: 40px;
+      border: 2px solid rgba(255, 165, 0, 0.3);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .card-header h3 {
+      color: #ffa500;
+      font-size: 1.8rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .level-indicator {
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+    
+    .availability-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 255, 136, 0.2);
+      padding: 8px 16px;
+      border-radius: 25px;
+      color: #00ff88;
+      font-weight: bold;
+    }
+    
+    .education-item, .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      background: #333333;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      border-left: 4px solid #ffa500;
+    }
+    
+    .institution-logo, .contact-icon {
+      font-size: 2.5rem;
+    }
+    
+    .education-details, .contact-details {
+      flex: 1;
+    }
+    
+    .education-details h4 {
+      color: #ffa500;
+      margin-bottom: 5px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .institution, .contact-value {
+      color: #ffffff;
+      font-weight: bold;
+    }
+    
+    .duration, .contact-label {
+      color: #999999;
+      font-size: 0.9rem;
+    }
+    
+    .completion-badge {
+      background: #00ff88;
+      color: #000000;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      display: inline-block;
+    }
+    
+    .language-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    
+    .language-tag {
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+    
+    /* Attribute Cards */
+    .attributes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .attribute-card {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+      border-radius: 20px;
+      padding: 30px;
+      border: 2px solid rgba(255, 165, 0, 0.3);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .attribute-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(255, 165, 0, 0.2);
+    }
+    
+    .attribute-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .attribute-card h3 {
+      color: #ffa500;
+      margin-bottom: 25px;
+      font-size: 1.3rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .skill-bar {
+      background: #444444;
+      border-radius: 15px;
+      height: 15px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 15px;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      border-radius: 15px;
+      transition: width 2s ease;
+      position: relative;
+    }
+    
+    .skill-percentage {
+      position: absolute;
+      right: 10px;
+      top: -30px;
+      color: #ffa500;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    
+    /* Links Grid */
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+      border-radius: 20px;
+      padding: 30px;
+      border: 2px solid rgba(255, 165, 0, 0.3);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .link-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(255, 165, 0, 0.2);
+    }
+    
+    .link-icon {
+      font-size: 3rem;
+    }
+    
+    .link-content h3 {
+      color: #ffa500;
+      margin-bottom: 8px;
+      font-size: 1.3rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .link-content p {
+      color: #cccccc;
+      margin-bottom: 10px;
+    }
+    
+    .link-status {
+      color: #00ff88;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    /* Call to Action */
+    .about-cta {
+      text-align: center;
+      margin: 80px 0;
+    }
+    
+    .cta-card {
+      background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+      border-radius: 30px;
+      padding: 60px 40px;
+      border: 2px solid rgba(255, 165, 0, 0.3);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .cta-title {
+      color: #ffa500;
+      font-size: 3rem;
+      margin-bottom: 25px;
+      text-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .cta-description {
+      color: #cccccc;
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    
+    .btn-group {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 18px 35px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(255, 165, 0, 0.4);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: #ffa500;
+      border: 2px solid #ffa500;
+    }
+    
+    .btn-secondary:hover {
+      background: #ffa500;
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+    
+    /* Footer */
+    .footer {
+      background: #1a1a1a;
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255, 165, 0, 0.2);
+    }
+    
+    .footer .logo-text {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+    
+    .copyright {
+      color: #999999;
+    }
+    
+    .copyright a {
+      color: #ffa500;
+      text-decoration: none;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .profile-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .profile-stats {
+        justify-content: center;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .cta-title {
+        font-size: 2.2rem;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .timeline::before {
+        left: 15px;
+      }
+      
+      .timeline-marker {
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+      }
+      
+      /* Passionate About Section Responsive */
+      .gamified-section > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+      
+      .gamified-section h2 {
+        font-size: 2rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1>
+        <a href="index.html" class="logo-text">Venkat<span>.</span></a>
+      </h1>
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="portfolio.html">AI Tools</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-title">About Me</h1>
+        <p class="section-text">
+          Get to know more about my journey, passion, and vision in the world of technology and development.
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Passionate About Section -->
+      <section class="gamified-section" style="padding: 80px 0;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+          <!-- Image Side -->
+          <div style="position: relative;">
+            <!-- Creative Image Container with Multiple Shapes -->
+            <div style="position: relative; z-index: 2; perspective: 1000px;">
+              <img src="./assets/images/about-banner.png" alt="Venkat Karthik" style="
+                width: 100%; 
+                max-width: 500px; 
+                clip-path: polygon(
+                  10% 0%, 
+                  90% 0%, 
+                  100% 10%, 
+                  100% 90%, 
+                  90% 100%, 
+                  10% 100%, 
+                  0% 90%, 
+                  0% 10%
+                );
+                box-shadow: 
+                  0 20px 60px rgba(0, 0, 0, 0.3),
+                  0 0 0 10px rgba(255, 255, 255, 0.1),
+                  0 0 0 20px rgba(0, 0, 0, 0.1);
+                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                transform-style: preserve-3d;
+                animation: float 6s ease-in-out infinite;
+              ">
+            </div>
+            
+            <!-- Geometric Background Shapes -->
+            <div style="position: absolute; top: -30px; left: -30px; width: 120%; height: 120%; z-index: 1; overflow: hidden;">
+              <!-- Circle -->
+              <div style="
+                position: absolute;
+                top: 20%;
+                left: -10%;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                border: 3px solid #FFFFFF;
+                opacity: 0.3;
+                animation: rotate 20s linear infinite;
+              "></div>
+              
+              <!-- Triangle -->
+              <div style="
+                position: absolute;
+                bottom: 10%;
+                right: -5%;
+                width: 0;
+                height: 0;
+                border-left: 100px solid transparent;
+                border-right: 100px solid transparent;
+                border-bottom: 173px solid rgba(255, 255, 255, 0.2);
+                animation: rotate 15s linear infinite reverse;
+              "></div>
+              
+              <!-- Square -->
+              <div style="
+                position: absolute;
+                top: 50%;
+                right: -15%;
+                width: 150px;
+                height: 150px;
+                border: 3px solid #FFFFFF;
+                opacity: 0.2;
+                transform: rotate(45deg);
+                animation: pulse 4s ease-in-out infinite;
+              "></div>
+              
+              <!-- Hexagon -->
+              <div style="
+                position: absolute;
+                bottom: 20%;
+                left: 10%;
+                width: 100px;
+                height: 57.74px;
+                background: rgba(255, 255, 255, 0.1);
+                position: relative;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                animation: float 8s ease-in-out infinite;
+              "></div>
+            </div>
+            
+            <!-- Animated Border Lines -->
+            <div style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 3;
+              pointer-events: none;
+            ">
+              <div style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100px;
+                height: 3px;
+                background: linear-gradient(90deg, #FFFFFF, transparent);
+                animation: slideRight 3s ease-in-out infinite;
+              "></div>
+              <div style="
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 100px;
+                height: 3px;
+                background: linear-gradient(90deg, transparent, #FFFFFF);
+                animation: slideLeft 3s ease-in-out infinite;
+              "></div>
+            </div>
+            
+            <!-- Glowing Dots -->
+            <div style="position: absolute; top: 10%; right: 10%; width: 10px; height: 10px; background: #FFFFFF; border-radius: 50%; box-shadow: 0 0 20px #FFFFFF; animation: blink 2s ease-in-out infinite; z-index: 4;"></div>
+            <div style="position: absolute; bottom: 15%; left: 15%; width: 8px; height: 8px; background: #FFFFFF; border-radius: 50%; box-shadow: 0 0 15px #FFFFFF; animation: blink 2.5s ease-in-out infinite; z-index: 4;"></div>
+            <div style="position: absolute; top: 40%; left: 5%; width: 6px; height: 6px; background: #FFFFFF; border-radius: 50%; box-shadow: 0 0 10px #FFFFFF; animation: blink 3s ease-in-out infinite; z-index: 4;"></div>
+          </div>
+          
+          <style>
+            @keyframes float {
+              0%, 100% { transform: translateY(0px) rotateY(0deg); }
+              50% { transform: translateY(-20px) rotateY(5deg); }
+            }
+            
+            @keyframes rotate {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+            
+            @keyframes pulse {
+              0%, 100% { transform: rotate(45deg) scale(1); opacity: 0.2; }
+              50% { transform: rotate(45deg) scale(1.1); opacity: 0.4; }
+            }
+            
+            @keyframes slideRight {
+              0%, 100% { left: 0; opacity: 0; }
+              50% { left: calc(100% - 100px); opacity: 1; }
+            }
+            
+            @keyframes slideLeft {
+              0%, 100% { right: 0; opacity: 0; }
+              50% { right: calc(100% - 100px); opacity: 1; }
+            }
+            
+            @keyframes blink {
+              0%, 100% { opacity: 1; transform: scale(1); }
+              50% { opacity: 0.3; transform: scale(1.5); }
+            }
+            
+            /* Hover effect for image */
+            img:hover {
+              transform: scale(1.05) rotateY(10deg) !important;
+              clip-path: polygon(
+                5% 0%, 
+                95% 0%, 
+                100% 5%, 
+                100% 95%, 
+                95% 100%, 
+                5% 100%, 
+                0% 95%, 
+                0% 5%
+              ) !important;
+            }
+          </style>
+            <div style="position: absolute; top: 20px; right: 20px; padding: 15px 25px; background: rgba(255, 165, 0, 0.9); border-radius: 15px; font-weight: bold; color: #000; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3);">ABOUT ME</div>
+          </div>
+
+          <!-- Content Side -->
+          <div>
+            <h2 style="font-size: 3rem; color: #ffffff; margin-bottom: 20px; font-family: 'Poppins', sans-serif; line-height: 1.2;">
+              Passionate About<br>
+              <span style="color: #ffa500;">Building Innovative Web Solutions</span>
+            </h2>
+            <p style="color: #cccccc; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
+              Hi! I'm Venkat Karthik, and I'm a developer who has passion for building clean web applications with intuitive functionalities. I enjoy the process of turning ideas into reality using creative solutions. I'm always curious about learning new skills, tools, and concepts. In addition to working on various solo full stack projects, I have worked with creative teams, which involves daily stand-ups and communications, source control, and project management.
+            </p>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+              <a href="index.html#contact" style="padding: 15px 35px; background: linear-gradient(45deg, #ffa500, #ff8c00); color: #ffffff; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(255, 165, 0, 0.3); display: inline-block;">HIRE ME</a>
+              <a href="./ggg.pdf" download="Venkat_Karthik_Resume.pdf" style="padding: 15px 35px; background: transparent; color: #ffa500; text-decoration: none; border: 2px solid #ffa500; border-radius: 30px; font-weight: bold; font-size: 1.1rem; transition: all 0.3s ease; display: inline-block;">DOWNLOAD CV</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile Card -->
+      <section class="gamified-section">
+        <div class="profile-card">
+          <div class="profile-avatar">
+            <div class="avatar-ring">
+              <div class="avatar-image">
+                <span>VK</span>
+              </div>
+            </div>
+            <div class="status-indicator"></div>
+          </div>
+          <div class="profile-info">
+            <h2 class="profile-name">Venkat Karthik</h2>
+            <p class="profile-title">Full-Stack Developer & Coding Club Co-ordinator</p>
+            <div class="profile-stats">
+              <div class="stat-item">
+                <span class="stat-number">2+</span>
+                <span class="stat-label">Years Learning</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Projects</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Tech Stack</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Achievement Badges -->
+      <section class="gamified-section">
+        <h2 class="section-title">🏆 Professional Achievements</h2>
+        <div class="badges-grid">
+          <div class="badge-card">
+            <span class="badge-icon">🎓</span>
+            <h3>Student Developer</h3>
+            <p>B.Tech CSE Student at HITAM</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 25%;"></div>
+            </div>
+            <span>1st Year - In Progress</span>
+          </div>
+          
+          <div class="badge-card">
+            <span class="badge-icon">👨‍💻</span>
+            <h3>Full-Stack Developer</h3>
+            <p>Frontend & Backend Mastery</p>
+            <div class="completion-badge">Certified</div>
+          </div>
+          
+          <div class="badge-card">
+            <span class="badge-icon">🎯</span>
+            <h3>Leadership Pro</h3>
+            <p>Coding Club Co-ordinator</p>
+            <div class="completion-badge">Active Role</div>
+          </div>
+          
+          <div class="badge-card">
+            <span class="badge-icon">🚀</span>
+            <h3>Project Builder</h3>
+            <p>10+ Real-world Projects</p>
+            <div class="completion-badge">Portfolio Ready</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Tree -->
+      <section class="gamified-section">
+        <h2 class="section-title">🌟 Technical Skills Mastery</h2>
+        <div class="skills-tree">
+          <!-- Frontend Branch -->
+          <div class="skill-branch">
+            <h3 class="branch-title">Frontend Development</h3>
+            <div class="skill-nodes">
+              <div class="skill-node expert">
+                <span class="node-icon">🏗️</span>
+                <span class="node-label">HTML5</span>
+                <span class="mastery-level">Expert</span>
+              </div>
+              <div class="skill-node expert">
+                <span class="node-icon">🎨</span>
+                <span class="node-label">CSS3</span>
+                <span class="mastery-level">Expert</span>
+              </div>
+              <div class="skill-node advanced">
+                <span class="node-icon">⚡</span>
+                <span class="node-label">JavaScript</span>
+                <span class="mastery-level">Advanced</span>
+              </div>
+              <div class="skill-node intermediate">
+                <span class="node-icon">🎯</span>
+                <span class="node-label">Tailwind CSS</span>
+                <span class="mastery-level">Intermediate</span>
+              </div>
+              <div class="skill-node learning">
+                <span class="node-icon">⚛️</span>
+                <span class="node-label">React</span>
+                <span class="mastery-level">Learning</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend Branch -->
+          <div class="skill-branch">
+            <h3 class="branch-title">Backend Development</h3>
+            <div class="skill-nodes">
+              <div class="skill-node advanced">
+                <span class="node-icon">�</span>
+                <span class="node-label">PHP</span>
+                <span class="mastery-level">Advanced</span>
+              </div>
+              <div class="skill-node intermediate">
+                <span class="node-icon">�</span>
+                <span class="node-label">Python</span>
+                <span class="mastery-level">Intermediate</span>
+              </div>
+              <div class="skill-node learning">
+                <span class="node-icon">�<</span>
+                <span class="node-label">Node.js</span>
+                <span class="mastery-level">Learning</span>
+              </div>
+              <div class="skill-node advanced">
+                <span class="node-icon">🔗</span>
+                <span class="node-label">REST API</span>
+                <span class="mastery-level">Advanced</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Database Branch -->
+          <div class="skill-branch">
+            <h3 class="branch-title">Database Management</h3>
+            <div class="skill-nodes">
+              <div class="skill-node advanced">
+                <span class="node-icon">🗄️</span>
+                <span class="node-label">MySQL</span>
+                <span class="mastery-level">Advanced</span>
+              </div>
+              <div class="skill-node intermediate">
+                <span class="node-icon">🍃</span>
+                <span class="node-label">MongoDB</span>
+                <span class="mastery-level">Intermediate</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools Branch -->
+          <div class="skill-branch">
+            <h3 class="branch-title">Development Tools</h3>
+            <div class="skill-nodes">
+              <div class="skill-node advanced">
+                <span class="node-icon">�</span>
+                <span class="node-label">Git</span>
+                <span class="mastery-level">Advanced</span>
+              </div>
+              <div class="skill-node advanced">
+                <span class="node-icon">�<//span>
+                <span class="node-label">GitHub</span>
+                <span class="mastery-level">Advanced</span>
+              </div>
+              <div class="skill-node intermediate">
+                <span class="node-icon">�<</span>
+                <span class="node-label">Postman</span>
+                <span class="mastery-level">Intermediate</span>
+              </div>
+              <div class="skill-node advanced">
+                <span class="node-icon">📊</span>
+                <span class="node-label">Excel</span>
+                <span class="mastery-level">Advanced</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education & Contact -->
+      <section class="gamified-section">
+        <div class="section-grid">
+          <!-- Education Card -->
+          <div class="info-card">
+            <div class="card-header">
+              <h3>🎓 Education Journey</h3>
+              <div class="level-indicator">Level 1</div>
+            </div>
+            <div class="education-item">
+              <span class="institution-logo">🏛️</span>
+              <div class="education-details">
+                <h4>Bachelor of Technology</h4>
+                <p class="institution">Hyderabad Institute of Technology and Management</p>
+                <p class="duration">2024 - Current</p>
+                <div class="progress-bar">
+                  <div class="progress" style="width: 25%;"></div>
+                </div>
+                <span>Computer Science Engineering</span>
+              </div>
+            </div>
+            
+            <div class="education-item">
+              <span class="institution-logo">🎒</span>
+              <div class="education-details">
+                <h4>High School Diploma</h4>
+                <p class="institution">Sri Chaitanya Jr College</p>
+                <p class="duration">2020 - 2023</p>
+                <div class="completion-badge">✅ Completed</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Card -->
+          <div class="info-card">
+            <div class="card-header">
+              <h3>📞 Connect With Me</h3>
+              <div class="availability-status">🟢 Available</div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📱</span>
+              <div class="contact-details">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+91 8309827125</span>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <span class="contact-icon">📧</span>
+              <div class="contact-details">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">karthikvenkat316@gmail.com</span>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <div class="contact-details">
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Hyderabad, Telangana, India</span>
+              </div>
+            </div>
+
+            <h4 style="color: #ff6b35; margin: 25px 0 15px 0;">🗣️ Languages</h4>
+            <div class="language-tags">
+              <span class="language-tag">English</span>
+              <span class="language-tag">Hindi</span>
+              <span class="language-tag">Telugu</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Character Attributes -->
+      <section class="gamified-section">
+        <h2 class="section-title">🎮 Character Attributes</h2>
+        <div class="attributes-grid">
+          <div class="attribute-card">
+            <span class="attribute-icon">🧠</span>
+            <h3>Management Skills</h3>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%;"></div>
+              <span class="skill-percentage">85%</span>
+            </div>
+          </div>
+
+          <div class="attribute-card">
+            <span class="attribute-icon">🎨</span>
+            <h3>Creativity</h3>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 90%;"></div>
+              <span class="skill-percentage">90%</span>
+            </div>
+          </div>
+
+          <div class="attribute-card">
+            <span class="attribute-icon">📈</span>
+            <h3>Digital Marketing</h3>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 75%;"></div>
+              <span class="skill-percentage">75%</span>
+            </div>
+          </div>
+
+          <div class="attribute-card">
+            <span class="attribute-icon">🤝</span>
+            <h3>Negotiation</h3>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 80%;"></div>
+              <span class="skill-percentage">80%</span>
+            </div>
+          </div>
+
+          <div class="attribute-card">
+            <span class="attribute-icon">🔍</span>
+            <h3>Critical Thinking</h3>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 88%;"></div>
+              <span class="skill-percentage">88%</span>
+            </div>
+          </div>
+
+          <div class="attribute-card">
+            <span class="attribute-icon">👑</span>
+            <h3>Leadership</h3>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%;"></div>
+              <span class="skill-percentage">85%</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Professional Links -->
+      <section class="gamified-section">
+        <h2 class="section-title">🔗 Professional Links</h2>
+        <div class="links-grid">
+          <a href="https://github.com/venkatkarthik316" target="_blank" class="link-card">
+            <span class="link-icon">🐙</span>
+            <div class="link-content">
+              <h3>GitHub</h3>
+              <p>github.com/venkatkarthik316</p>
+              <div class="link-status">🟢 Active</div>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/karthik--venkat/" target="_blank" class="link-card">
+            <span class="link-icon">💼</span>
+            <div class="link-content">
+              <h3>LinkedIn</h3>
+              <p>linkedin.com/in/karthik--venkat/</p>
+              <div class="link-status">🟢 Active</div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="about-cta">
+        <div class="cta-card">
+          <h2 class="cta-title">🚀 Ready to Level Up Together?</h2>
+          <p class="cta-description">
+            Let's collaborate on your next big project and create something amazing!
+          </p>
+          <div class="btn-group">
+            <a href="index.html#contact" class="btn btn-primary">🎯 Start Mission</a>
+            <a href="./ggg.pdf" download="Venkat_Karthik_Resume.pdf" class="btn btn-secondary">📄 Download Resume</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <a href="index.html" class="logo-text">Venkat<span>.</span></a>
+      </p>
+      <p class="copyright">
+        &copy; 2025 <a href="#">Venkat Karthik</a>. All rights reserved
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

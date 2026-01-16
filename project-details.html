@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details - Venkat Karthik</title>
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Ocean Theme CSS -->
+  <link rel="stylesheet" href="./assets/css/ocean-theme.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+      color: #000000;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(0, 150, 255, 0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo-text {
+      font-size: 2rem;
+      font-weight: bold;
+      color: hsl(200, 85%, 55%);
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .logo-text span {
+      color: #000000;
+    }
+    
+    .navbar {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    .navbar a {
+      color: #000000;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar a:hover {
+      color: hsl(200, 85%, 55%);
+    }
+    
+    main {
+      padding-top: 100px;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+    
+    .project-detail {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 150, 255, 0.2);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 40px auto;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-title {
+      font-size: 2.5rem;
+      color: hsl(200, 85%, 55%);
+      margin-bottom: 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .project-meta {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .meta-item {
+      background: hsl(200, 85%, 55%);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .project-description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333333;
+      margin-bottom: 30px;
+    }
+    
+    .project-features {
+      margin-top: 30px;
+    }
+    
+    .project-features h3 {
+      color: hsl(200, 85%, 55%);
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .project-features ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .project-features li {
+      padding: 12px 0;
+      padding-left: 30px;
+      position: relative;
+      color: #333333;
+    }
+    
+    .project-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: hsl(200, 85%, 55%);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .back-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: hsl(200, 85%, 55%);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      margin-top: 30px;
+    }
+    
+    .back-btn:hover {
+      background: hsl(200, 85%, 45%);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0, 150, 255, 0.3);
+    }
+    
+    .footer {
+      background: #f5f5f5;
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid rgba(0, 150, 255, 0.2);
+    }
+    
+    .copyright {
+      color: #666666;
+    }
+    
+    .copyright a {
+      color: hsl(200, 85%, 55%);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1>
+        <a href="index.html" class="logo-text">Venkat<span>.</span></a>
+      </h1>
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="portfolio.html">AI Tools</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <div class="project-detail" id="project-content">
+        <h1 class="project-title">Loading Project...</h1>
+        <p class="project-description">Please wait while we load the project details.</p>
+      </div>
+      <a href="index.html#portfolio" class="back-btn">← Back to Projects</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <a href="index.html" class="logo-text">Venkat<span>.</span></a>
+      </p>
+      <p class="copyright">
+        &copy; 2025 <a href="#">Venkat Karthik</a>. All rights reserved
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Project data
+    const projects = {
+      'alluri-resorts': {
+        title: 'Alluri Resorts - Real Time Business Website',
+        role: 'Full-Stack Developer',
+        tech: 'HTML, CSS, JavaScript, PHP, HOSTINGER',
+        status: 'Completed',
+        description: 'Developed a comprehensive full-stack web platform for a real Hotel Agency that handles real-time payments, bookings, and customer management systems. The platform provides seamless user experience with modern design and robust backend functionality.',
+        features: [
+          'Real-time booking system with instant confirmation',
+          'Secure payment gateway integration',
+          'Customer management dashboard',
+          'Responsive design for all devices',
+          'Admin panel for hotel management',
+          'Email notification system',
+          'Room availability tracking',
+          'Customer review and rating system'
+        ]
+      },
+      'codesphere': {
+        title: 'CodeSphere - The Ultimate Coding Hub',
+        role: 'Full-Stack Developer (Team: AI/ML)',
+        tech: 'Next.js, Tailwind CSS, Node.js, Express, MongoDB, Vercel',
+        status: 'Completed',
+        description: 'Developed a full-stack web platform that offers coders a one-stop solution for notes, PDFs, tests, video tutorials, roadmaps, and community interaction. Built with modern technologies and deployed on Vercel for optimal performance.',
+        features: [
+          'Comprehensive learning resources library',
+          'Interactive coding tests and challenges',
+          'Video tutorial integration',
+          'Community discussion forums',
+          'Personalized learning roadmaps',
+          'Progress tracking dashboard',
+          'PDF document management',
+          'User authentication and profiles'
+        ]
+      },
+      'flow6': {
+        title: 'FLOW-6 Python Based Eye Sensors',
+        role: 'Full-Stack Developer',
+        tech: 'Python, OpenCV, HTML, CSS, JavaScript, PHP, AI Agents',
+        status: 'Completed',
+        description: 'Advanced AI-powered eye tracking system using computer vision and machine learning algorithms for accessibility applications. This project demonstrates the integration of AI with web technologies to create innovative solutions.',
+        features: [
+          'Real-time eye tracking using OpenCV',
+          'Machine learning model for gesture recognition',
+          'Web-based control interface',
+          'Accessibility features for disabled users',
+          'Calibration system for accuracy',
+          'Multi-user support',
+          'Data visualization dashboard',
+          'Cross-platform compatibility'
+        ]
+      },
+      'hospital-management': {
+        title: 'Hospital Bill Management System',
+        role: 'Full-Stack Developer',
+        tech: 'HTML, CSS, JavaScript, PHP, MySQL, HOSTINGER',
+        status: 'Completed',
+        description: 'Comprehensive billing and management system for healthcare facilities with automated invoice generation and patient record management. Streamlines hospital operations and improves efficiency.',
+        features: [
+          'Automated bill generation',
+          'Patient record management',
+          'Appointment scheduling system',
+          'Inventory tracking for medical supplies',
+          'Doctor and staff management',
+          'Insurance claim processing',
+          'Report generation and analytics',
+          'Secure data encryption'
+        ]
+      },
+      'krishi-mitra': {
+        title: 'Krishi Mitra AI - Plants Based AI for Farmers',
+        role: 'Full-Stack Developer',
+        tech: 'Python, TensorFlow, HTML, CSS, JavaScript, PHP, AI Agents',
+        status: 'Completed',
+        description: 'AI-powered agricultural assistant helping farmers with plant disease detection, crop recommendations, and farming best practices. Combines machine learning with practical farming knowledge.',
+        features: [
+          'Plant disease detection using image recognition',
+          'Crop recommendation based on soil and climate',
+          'Weather forecast integration',
+          'Farming tips and best practices',
+          'Multilingual support for farmers',
+          'Market price information',
+          'Community forum for farmers',
+          'Government scheme information'
+        ]
+      }
+    };
+
+    // Get project ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('project');
+
+    // Load project details
+    if (projectId && projects[projectId]) {
+      const project = projects[projectId];
+      document.getElementById('project-content').innerHTML = `
+        <h1 class="project-title">${project.title}</h1>
+        <div class="project-meta">
+          <span class="meta-item">👤 ${project.role}</span>
+          <span class="meta-item">💻 ${project.tech}</span>
+          <span class="meta-item">✅ ${project.status}</span>
+        </div>
+        <p class="project-description">${project.description}</p>
+        <div class="project-features">
+          <h3>Key Features</h3>
+          <ul>
+            ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    } else {
+      document.getElementById('project-content').innerHTML = `
+        <h1 class="project-title">Project Not Found</h1>
+        <p class="project-description">Sorry, the project you're looking for doesn't exist.</p>
+      `;
+    }
+  </script>
+</body>
+</html>

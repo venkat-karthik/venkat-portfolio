@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tools Arsenal - Venkat Karthik</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255, 165, 0, 0.2);
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-text {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffa500;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .logo-text span {
+      color: #ffffff;
+    }
+
+    .navbar {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .navbar a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .navbar a:hover {
+      color: #ffa500;
+    }
+
+    .navbar a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #ffa500;
+    }
+
+    /* Main Content */
+    main {
+      padding-top: 100px;
+      min-height: 100vh;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 0;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 165, 0, 0.1) 0%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      color: #ffa500;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #ffa500, #ff8c00, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: #cccccc;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      color: #999999;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid rgba(255, 165, 0, 0.2);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 165, 0, 0.5);
+      box-shadow: 0 20px 40px rgba(255, 165, 0, 0.1);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ffa500;
+      display: block;
+      margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .stat-label {
+      color: #cccccc;
+      font-size: 1.1rem;
+    }
+
+    /* Search and Filter */
+    .search-filter-section {
+      padding: 60px 0;
+      background: #111111;
+    }
+
+    .search-container {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 20px 60px 20px 20px;
+      background: #1a1a1a;
+      border: 2px solid rgba(255, 165, 0, 0.3);
+      border-radius: 50px;
+      color: #ffffff;
+      font-size: 1.1rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-box:focus {
+      border-color: #ffa500;
+      box-shadow: 0 0 20px rgba(255, 165, 0, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ffa500;
+      font-size: 1.5rem;
+    }
+
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .filter-tab {
+      padding: 12px 25px;
+      background: #1a1a1a;
+      border: 2px solid rgba(255, 165, 0, 0.3);
+      border-radius: 25px;
+      color: #cccccc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .filter-tab:hover,
+    .filter-tab.active {
+      background: #ffa500;
+      color: #000000;
+      border-color: #ffa500;
+      transform: translateY(-2px);
+    }
+
+    /* Tools Categories */
+    .tools-section {
+      padding: 40px 0;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      padding: 30px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      border-radius: 20px;
+      border-left: 5px solid #ffa500;
+    }
+
+    .category-icon {
+      font-size: 3rem;
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .category-info h2 {
+      color: #ffa500;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .category-description {
+      color: #cccccc;
+      font-size: 1.1rem;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 25px;
+      margin-bottom: 80px;
+    }
+
+    .tool-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      border-radius: 20px;
+      padding: 25px;
+      border: 1px solid rgba(255, 165, 0, 0.2);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .tool-card:hover::before {
+      left: 100%;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 165, 0, 0.6);
+      box-shadow: 0 25px 50px rgba(255, 165, 0, 0.15);
+    }
+
+    .tool-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .tool-rank {
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      color: #000000;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .tool-name {
+      color: #ffffff;
+      font-size: 1.3rem;
+      font-weight: 600;
+      flex: 1;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .productivity-badge {
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .productivity-high {
+      background: linear-gradient(45deg, #00ff88, #00cc6a);
+      color: #000000;
+    }
+
+    .productivity-medium {
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      color: #000000;
+    }
+
+    .productivity-low {
+      background: linear-gradient(45deg, #ff6b6b, #ff5252);
+      color: #ffffff;
+    }
+
+    .tool-description {
+      color: #cccccc;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .tool-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .feature-tag {
+      background: rgba(255, 165, 0, 0.2);
+      color: #ffa500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255, 165, 0, 0.3);
+    }
+
+    .tool-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .tool-btn {
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #ffa500, #ff8c00);
+      color: #000000;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffa500;
+      border: 1px solid #ffa500;
+    }
+
+    .tool-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255, 165, 0, 0.3);
+    }
+
+    /* API Section Special Styling */
+    .api-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .api-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      border-radius: 15px;
+      padding: 20px;
+      border: 1px solid rgba(255, 165, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .api-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 165, 0, 0.5);
+      box-shadow: 0 15px 30px rgba(255, 165, 0, 0.1);
+    }
+
+    .api-name {
+      color: #ffa500;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .api-description {
+      color: #cccccc;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    .footer {
+      background: #0a0a0a;
+      padding: 60px 0 40px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 165, 0, 0.2);
+      margin-top: 80px;
+    }
+
+    .footer .logo-text {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .footer-description {
+      color: #999999;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #cccccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #ffa500;
+    }
+
+    .copyright {
+      color: #666666;
+      font-size: 0.9rem;
+    }
+
+    .copyright a {
+      color: #ffa500;
+      text-decoration: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .api-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
+
+      .category-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .navbar {
+        display: none;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .tool-card {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .tool-card:nth-child(even) {
+      animation-delay: 0.1s;
+    }
+
+    .tool-card:nth-child(3n) {
+      animation-delay: 0.2s;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1>
+        <a href="index.html" class="logo-text">Venkat<span>.</span></a>
+      </h1>
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="portfolio.html" class="active">AI Tools</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">AI Tools Arsenal</h1>
+          <p class="hero-subtitle">Curated Collection of Cutting-Edge AI Tools</p>
+          <p class="hero-description">
+            Discover my comprehensive collection of AI tools, platforms, and APIs that I use for development, 
+            productivity, and innovation. Each tool is ranked by productivity impact and real-world utility.
+          </p>
+          
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-number">100+</span>
+              <span class="stat-label">AI Tools</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">8</span>
+              <span class="stat-label">Categories</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">APIs</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Updated</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="search-filter-section">
+      <div class="container">
+        <div class="search-container">
+          <input type="text" class="search-box" placeholder="Search AI tools, platforms, APIs..." id="searchBox">
+          <span class="search-icon">🔍</span>
+        </div>
+        
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-category="all">All Tools</button>
+          <button class="filter-tab" data-category="ide">IDE Platforms</button>
+          <button class="filter-tab" data-category="ppt">PPT Makers</button>
+          <button class="filter-tab" data-category="knowledge">Knowledge Tools</button>
+          <button class="filter-tab" data-category="agents">AI Agents</button>
+          <button class="filter-tab" data-category="media">Media Creation</button>
+          <button class="filter-tab" data-category="deployment">Deployment</button>
+          <button class="filter-tab" data-category="apis">APIs</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- IDE Platforms -->
+      <section class="tools-section" data-category="ide">
+        <div class="category-header">
+          <div class="category-icon">💻</div>
+          <div class="category-info">
+            <h2>IDE Platforms & Development Tools</h2>
+            <p class="category-description">Most impactful development environments and AI-powered coding assistants</p>
+          </div>
+        </div>
+        
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#1</div>
+              <div class="tool-name">V0 by Vercel</div>
+              <div class="productivity-badge productivity-high">High Impact</div>
+            </div>
+            <p class="tool-description">Fastest way to go from idea to production-grade frontend. Revolutionary AI-powered development.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Frontend</span>
+              <span class="feature-tag">React</span>
+              <span class="feature-tag">Next.js</span>
+              <span class="feature-tag">AI Generation</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://v0.dev" class="tool-btn btn-primary" target="_blank">Try V0</a>
+              <a href="#" class="tool-btn btn-secondary">Learn More</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#2</div>
+              <div class="tool-name">Project IDX</div>
+              <div class="productivity-badge productivity-high">High Impact</div>
+            </div>
+            <p class="tool-description">Cloud IDE + Firebase + Google AI = high leverage development environment.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Cloud IDE</span>
+              <span class="feature-tag">Firebase</span>
+              <span class="feature-tag">Google AI</span>
+              <span class="feature-tag">Web VS Code</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://idx.google.com" class="tool-btn btn-primary" target="_blank">Try IDX</a>
+              <a href="#" class="tool-btn btn-secondary">Documentation</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#3</div>
+              <div class="tool-name">Cursor</div>
+              <div class="productivity-badge productivity-high">High Impact</div>
+            </div>
+            <p class="tool-description">Deep repo-aware AI coding assistant with huge productivity jump for developers.</p>
+            <div class="tool-features">
+              <span class="feature-tag">AI Coding</span>
+              <span class="feature-tag">Repo Aware</span>
+              <span class="feature-tag">VS Code</span>
+              <span class="feature-tag">Productivity</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://cursor.sh" class="tool-btn btn-primary" target="_blank">Get Cursor</a>
+              <a href="#" class="tool-btn btn-secondary">Features</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#4</div>
+              <div class="tool-name">Google AI Studio</div>
+              <div class="productivity-badge productivity-high">High Impact</div>
+            </div>
+            <p class="tool-description">Direct access to Gemini models for serious AI work and experimentation.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Gemini</span>
+              <span class="feature-tag">AI Models</span>
+              <span class="feature-tag">Google</span>
+              <span class="feature-tag">API Access</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://aistudio.google.com" class="tool-btn btn-primary" target="_blank">Open Studio</a>
+              <a href="#" class="tool-btn btn-secondary">API Docs</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#5</div>
+              <div class="tool-name">Together.ai</div>
+              <div class="productivity-badge productivity-high">High Impact</div>
+            </div>
+            <p class="tool-description">Practical access to multiple open-source LLMs with excellent performance.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Open Source</span>
+              <span class="feature-tag">Multiple LLMs</span>
+              <span class="feature-tag">API Access</span>
+              <span class="feature-tag">Cost Effective</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://together.ai" class="tool-btn btn-primary" target="_blank">Try Together</a>
+              <a href="#" class="tool-btn btn-secondary">Models</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#6</div>
+              <div class="tool-name">Mistral AI</div>
+              <div class="productivity-badge productivity-high">High Impact</div>
+            </div>
+            <p class="tool-description">Strong open models, reliable GPT alternative with excellent reasoning.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Open Models</span>
+              <span class="feature-tag">GPT Alternative</span>
+              <span class="feature-tag">Reasoning</span>
+              <span class="feature-tag">European AI</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://mistral.ai" class="tool-btn btn-primary" target="_blank">Try Mistral</a>
+              <a href="#" class="tool-btn btn-secondary">Documentation</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#7</div>
+              <div class="tool-name">DeepSeek V3</div>
+              <div class="productivity-badge productivity-high">High Impact</div>
+            </div>
+            <p class="tool-description">Excellent reasoning capabilities, especially for coding and mathematical problems.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Reasoning</span>
+              <span class="feature-tag">Coding</span>
+              <span class="feature-tag">Mathematics</span>
+              <span class="feature-tag">Problem Solving</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://deepseek.com" class="tool-btn btn-primary" target="_blank">Try DeepSeek</a>
+              <a href="#" class="tool-btn btn-secondary">Research</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#8</div>
+              <div class="tool-name">Replit</div>
+              <div class="productivity-badge productivity-medium">Medium Impact</div>
+            </div>
+            <p class="tool-description">Fast prototyping and deployment platform with collaborative features.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Prototyping</span>
+              <span class="feature-tag">Deployment</span>
+              <span class="feature-tag">Collaboration</span>
+              <span class="feature-tag">Multi-language</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://replit.com" class="tool-btn btn-primary" target="_blank">Try Replit</a>
+              <a href="#" class="tool-btn btn-secondary">Templates</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#9</div>
+              <div class="tool-name">LLaMA Coder</div>
+              <div class="productivity-badge productivity-medium">Medium Impact</div>
+            </div>
+            <p class="tool-description">Good for quick code snippets, less suitable for full system development.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Code Snippets</span>
+              <span class="feature-tag">Quick Tasks</span>
+              <span class="feature-tag">LLaMA Based</span>
+              <span class="feature-tag">Lightweight</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try LLaMA Coder</a>
+              <a href="#" class="tool-btn btn-secondary">Examples</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#10</div>
+              <div class="tool-name">21st Dev</div>
+              <div class="productivity-badge productivity-medium">Niche Useful</div>
+            </div>
+            <p class="tool-description">Strong frontend productivity tool, niche but very useful for specific workflows.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Frontend</span>
+              <span class="feature-tag">Productivity</span>
+              <span class="feature-tag">Niche</span>
+              <span class="feature-tag">Specialized</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try 21st Dev</a>
+              <a href="#" class="tool-btn btn-secondary">Features</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#11</div>
+              <div class="tool-name">Kiro</div>
+              <div class="productivity-badge productivity-low">Limited</div>
+            </div>
+            <p class="tool-description">AI-powered development assistant with limited ecosystem but growing potential.</p>
+            <div class="tool-features">
+              <span class="feature-tag">AI Assistant</span>
+              <span class="feature-tag">Development</span>
+              <span class="feature-tag">Limited Ecosystem</span>
+              <span class="feature-tag">Growing</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Explore Kiro</a>
+              <a href="#" class="tool-btn btn-secondary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PPT Makers -->
+      <section class="tools-section" data-category="ppt">
+        <div class="category-header">
+          <div class="category-icon">📊</div>
+          <div class="category-info">
+            <h2>AI Presentation Makers</h2>
+            <p class="category-description">Best tools for creating professional presentations with AI assistance</p>
+          </div>
+        </div>
+        
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#1</div>
+              <div class="tool-name">Chronicle HQ</div>
+              <div class="productivity-badge productivity-high">Best Output</div>
+            </div>
+            <p class="tool-description">Best professional-grade slides with superior design and content quality.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Professional</span>
+              <span class="feature-tag">High Quality</span>
+              <span class="feature-tag">Business</span>
+              <span class="feature-tag">Premium Design</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try Chronicle</a>
+              <a href="#" class="tool-btn btn-secondary">Examples</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#2</div>
+              <div class="tool-name">Gamma</div>
+              <div class="productivity-badge productivity-high">Balanced</div>
+            </div>
+            <p class="tool-description">Best balance of speed and design for creating stunning presentations quickly.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Speed</span>
+              <span class="feature-tag">Design</span>
+              <span class="feature-tag">Templates</span>
+              <span class="feature-tag">AI Generation</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://gamma.app" class="tool-btn btn-primary" target="_blank">Try Gamma</a>
+              <a href="#" class="tool-btn btn-secondary">Templates</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#3</div>
+              <div class="tool-name">Beautiful.ai</div>
+              <div class="productivity-badge productivity-medium">Clean Design</div>
+            </div>
+            <p class="tool-description">Clean, consistent decks with intelligent design assistance and smart layouts.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Clean Design</span>
+              <span class="feature-tag">Consistent</span>
+              <span class="feature-tag">Smart Layout</span>
+              <span class="feature-tag">Auto-Design</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://beautiful.ai" class="tool-btn btn-primary" target="_blank">Try Beautiful.ai</a>
+              <a href="#" class="tool-btn btn-secondary">Features</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#4</div>
+              <div class="tool-name">ALAI</div>
+              <div class="productivity-badge productivity-medium">Business Focus</div>
+            </div>
+            <p class="tool-description">Business clarity focused presentation tool with professional templates.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Business</span>
+              <span class="feature-tag">Clarity</span>
+              <span class="feature-tag">Professional</span>
+              <span class="feature-tag">Corporate</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try ALAI</a>
+              <a href="#" class="tool-btn btn-secondary">Business Templates</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#5</div>
+              <div class="tool-name">Gen-Spark</div>
+              <div class="productivity-badge productivity-medium">Data Heavy</div>
+            </div>
+            <p class="tool-description">Specialized in data-heavy presentations with advanced chart generation.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Data Visualization</span>
+              <span class="feature-tag">Charts</span>
+              <span class="feature-tag">Analytics</span>
+              <span class="feature-tag">Reports</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try Gen-Spark</a>
+              <a href="#" class="tool-btn btn-secondary">Data Examples</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#6</div>
+              <div class="tool-name">Slides AI</div>
+              <div class="productivity-badge productivity-low">Simple</div>
+            </div>
+            <p class="tool-description">Simple conversions and basic slide generation with minimal customization.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Simple</span>
+              <span class="feature-tag">Conversions</span>
+              <span class="feature-tag">Basic</span>
+              <span class="feature-tag">Quick</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try Slides AI</a>
+              <a href="#" class="tool-btn btn-secondary">Convert</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#7</div>
+              <div class="tool-name">Kiwi (Nano Banana)</div>
+              <div class="productivity-badge productivity-low">Creative</div>
+            </div>
+            <p class="tool-description">Creative presentation tool but with inconsistent output quality.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Creative</span>
+              <span class="feature-tag">Artistic</span>
+              <span class="feature-tag">Inconsistent</span>
+              <span class="feature-tag">Experimental</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try Kiwi</a>
+              <a href="#" class="tool-btn btn-secondary">Creative Examples</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#8</div>
+              <div class="tool-name">Faces</div>
+              <div class="productivity-badge productivity-low">Visual First</div>
+            </div>
+            <p class="tool-description">Visual-first presentation tool with limited structural capabilities.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Visual First</span>
+              <span class="feature-tag">Images</span>
+              <span class="feature-tag">Limited Structure</span>
+              <span class="feature-tag">Graphics</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try Faces</a>
+              <a href="#" class="tool-btn btn-secondary">Visual Gallery</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Knowledge & Research Tools -->
+      <section class="tools-section" data-category="knowledge">
+        <div class="category-header">
+          <div class="category-icon">🧠</div>
+          <div class="category-info">
+            <h2>Knowledge & Research Tools</h2>
+            <p class="category-description">AI-powered tools for learning, research, and knowledge management</p>
+          </div>
+        </div>
+        
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#1</div>
+              <div class="tool-name">Notebook LLM</div>
+              <div class="productivity-badge productivity-high">Learning Boost</div>
+            </div>
+            <p class="tool-description">Massive boost for learning from PDFs with AI-powered analysis and insights.</p>
+            <div class="tool-features">
+              <span class="feature-tag">PDF Analysis</span>
+              <span class="feature-tag">Learning</span>
+              <span class="feature-tag">AI Insights</span>
+              <span class="feature-tag">Google</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://notebooklm.google.com" class="tool-btn btn-primary" target="_blank">Try NotebookLM</a>
+              <a href="#" class="tool-btn btn-secondary">Guide</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#2</div>
+              <div class="tool-name">Elicit</div>
+              <div class="productivity-badge productivity-high">Research Grade</div>
+            </div>
+            <p class="tool-description">Research-grade academic productivity tool for systematic literature reviews.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Academic</span>
+              <span class="feature-tag">Research</span>
+              <span class="feature-tag">Literature Review</span>
+              <span class="feature-tag">Citations</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://elicit.org" class="tool-btn btn-primary" target="_blank">Try Elicit</a>
+              <a href="#" class="tool-btn btn-secondary">Research</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#3</div>
+              <div class="tool-name">STORM</div>
+              <div class="productivity-badge productivity-medium">Structured</div>
+            </div>
+            <p class="tool-description">Structured reports with citations for comprehensive research documentation.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Reports</span>
+              <span class="feature-tag">Citations</span>
+              <span class="feature-tag">Structured</span>
+              <span class="feature-tag">Documentation</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try STORM</a>
+              <a href="#" class="tool-btn btn-secondary">Examples</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#4</div>
+              <div class="tool-name">Glasp</div>
+              <div class="productivity-badge productivity-medium">Bookmarking</div>
+            </div>
+            <p class="tool-description">Best bookmarking and highlighting tool for web research and knowledge collection.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Bookmarking</span>
+              <span class="feature-tag">Highlighting</span>
+              <span class="feature-tag">Web Research</span>
+              <span class="feature-tag">Knowledge Base</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://glasp.co" class="tool-btn btn-primary" target="_blank">Try Glasp</a>
+              <a href="#" class="tool-btn btn-secondary">Extension</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#5</div>
+              <div class="tool-name">X-Mind AI</div>
+              <div class="productivity-badge productivity-medium">Visual Thinking</div>
+            </div>
+            <p class="tool-description">Visual thinking and mind mapping from documents with AI assistance.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Mind Mapping</span>
+              <span class="feature-tag">Visual Thinking</span>
+              <span class="feature-tag">Documents</span>
+              <span class="feature-tag">AI Analysis</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try X-Mind AI</a>
+              <a href="#" class="tool-btn btn-secondary">Mind Maps</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#6</div>
+              <div class="tool-name">AskYourPDF</div>
+              <div class="productivity-badge productivity-low">PDF Chat</div>
+            </div>
+            <p class="tool-description">Chat with PDF documents for quick information extraction and Q&A.</p>
+            <div class="tool-features">
+              <span class="feature-tag">PDF Chat</span>
+              <span class="feature-tag">Q&A</span>
+              <span class="feature-tag">Information Extraction</span>
+              <span class="feature-tag">Document Analysis</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try AskYourPDF</a>
+              <a href="#" class="tool-btn btn-secondary">Upload PDF</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI Agents & Automation -->
+      <section class="tools-section" data-category="agents">
+        <div class="category-header">
+          <div class="category-icon">🤖</div>
+          <div class="category-info">
+            <h2>AI Agents & Automation</h2>
+            <p class="category-description">Powerful automation tools and AI agents for workflow optimization</p>
+          </div>
+        </div>
+        
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#1</div>
+              <div class="tool-name">Make (n8n)</div>
+              <div class="productivity-badge productivity-high">Automation Power</div>
+            </div>
+            <p class="tool-description">Powerful workflow automation with visual interface and extensive integrations.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Workflow</span>
+              <span class="feature-tag">Automation</span>
+              <span class="feature-tag">Integrations</span>
+              <span class="feature-tag">Visual Builder</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://make.com" class="tool-btn btn-primary" target="_blank">Try Make</a>
+              <a href="#" class="tool-btn btn-secondary">Templates</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#2</div>
+              <div class="tool-name">Apify</div>
+              <div class="productivity-badge productivity-high">Web Scraping</div>
+            </div>
+            <p class="tool-description">Advanced web scraping and data extraction platform with AI capabilities.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Web Scraping</span>
+              <span class="feature-tag">Data Extraction</span>
+              <span class="feature-tag">APIs</span>
+              <span class="feature-tag">Automation</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://apify.com" class="tool-btn btn-primary" target="_blank">Try Apify</a>
+              <a href="#" class="tool-btn btn-secondary">Actors</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#3</div>
+              <div class="tool-name">Hugging Face</div>
+              <div class="productivity-badge productivity-high">ML Models</div>
+            </div>
+            <p class="tool-description">Open-source machine learning platform with thousands of pre-trained models.</p>
+            <div class="tool-features">
+              <span class="feature-tag">ML Models</span>
+              <span class="feature-tag">Open Source</span>
+              <span class="feature-tag">Transformers</span>
+              <span class="feature-tag">Community</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://huggingface.co" class="tool-btn btn-primary" target="_blank">Try Hugging Face</a>
+              <a href="#" class="tool-btn btn-secondary">Models</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#4</div>
+              <div class="tool-name">MindPal</div>
+              <div class="productivity-badge productivity-medium">AI Workflows</div>
+            </div>
+            <p class="tool-description">AI-powered workflow automation for knowledge workers and content creators.</p>
+            <div class="tool-features">
+              <span class="feature-tag">AI Workflows</span>
+              <span class="feature-tag">Knowledge Work</span>
+              <span class="feature-tag">Content Creation</span>
+              <span class="feature-tag">Productivity</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try MindPal</a>
+              <a href="#" class="tool-btn btn-secondary">Workflows</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#5</div>
+              <div class="tool-name">ManyChat</div>
+              <div class="productivity-badge productivity-medium">Chatbots</div>
+            </div>
+            <p class="tool-description">Chatbot platform for customer engagement and automated conversations.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Chatbots</span>
+              <span class="feature-tag">Customer Service</span>
+              <span class="feature-tag">Automation</span>
+              <span class="feature-tag">Marketing</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://manychat.com" class="tool-btn btn-primary" target="_blank">Try ManyChat</a>
+              <a href="#" class="tool-btn btn-secondary">Templates</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#6</div>
+              <div class="tool-name">Gemini Gems</div>
+              <div class="productivity-badge productivity-medium">Custom AI</div>
+            </div>
+            <p class="tool-description">Custom AI assistants powered by Google's Gemini for specific tasks.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Custom AI</span>
+              <span class="feature-tag">Gemini</span>
+              <span class="feature-tag">Task Specific</span>
+              <span class="feature-tag">Google</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try Gemini Gems</a>
+              <a href="#" class="tool-btn btn-secondary">Create Gem</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Media Creation Tools -->
+      <section class="tools-section" data-category="media">
+        <div class="category-header">
+          <div class="category-icon">🎨</div>
+          <div class="category-info">
+            <h2>Media Creation Tools</h2>
+            <p class="category-description">AI-powered video, image, and audio generation tools</p>
+          </div>
+        </div>
+        
+        <div class="tools-grid">
+          <!-- Video Tools -->
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#1</div>
+              <div class="tool-name">Google Lumiere</div>
+              <div class="productivity-badge productivity-high">Video Quality</div>
+            </div>
+            <p class="tool-description">State-of-the-art video generation with exceptional quality and realism.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Video Generation</span>
+              <span class="feature-tag">High Quality</span>
+              <span class="feature-tag">Google AI</span>
+              <span class="feature-tag">Realistic</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try Lumiere</a>
+              <a href="#" class="tool-btn btn-secondary">Examples</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#2</div>
+              <div class="tool-name">Pika Labs</div>
+              <div class="productivity-badge productivity-high">Video Creation</div>
+            </div>
+            <p class="tool-description">Advanced AI video generation platform with creative control and editing features.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Video AI</span>
+              <span class="feature-tag">Creative Control</span>
+              <span class="feature-tag">Editing</span>
+              <span class="feature-tag">Animation</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://pika.art" class="tool-btn btn-primary" target="_blank">Try Pika</a>
+              <a href="#" class="tool-btn btn-secondary">Gallery</a>
+            </div>
+          </div>
+
+          <!-- Image Tools -->
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#3</div>
+              <div class="tool-name">Leonardo AI</div>
+              <div class="productivity-badge productivity-high">Image Creation</div>
+            </div>
+            <p class="tool-description">Advanced AI image generation with fine-tuned models and creative control.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Image Generation</span>
+              <span class="feature-tag">Fine-tuned Models</span>
+              <span class="feature-tag">Creative Control</span>
+              <span class="feature-tag">Art Styles</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://leonardo.ai" class="tool-btn btn-primary" target="_blank">Try Leonardo</a>
+              <a href="#" class="tool-btn btn-secondary">Gallery</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#4</div>
+              <div class="tool-name">Imagen 3</div>
+              <div class="productivity-badge productivity-high">Google Images</div>
+            </div>
+            <p class="tool-description">Google's latest image generation model with photorealistic capabilities.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Photorealistic</span>
+              <span class="feature-tag">Google AI</span>
+              <span class="feature-tag">High Resolution</span>
+              <span class="feature-tag">Text to Image</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try Imagen 3</a>
+              <a href="#" class="tool-btn btn-secondary">Examples</a>
+            </div>
+          </div>
+
+          <!-- Audio Tools -->
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#5</div>
+              <div class="tool-name">ElevenLabs</div>
+              <div class="productivity-badge productivity-high">Voice AI</div>
+            </div>
+            <p class="tool-description">Premium voice synthesis and cloning with natural-sounding speech.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Voice Synthesis</span>
+              <span class="feature-tag">Voice Cloning</span>
+              <span class="feature-tag">Natural Speech</span>
+              <span class="feature-tag">Multilingual</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://elevenlabs.io" class="tool-btn btn-primary" target="_blank">Try ElevenLabs</a>
+              <a href="#" class="tool-btn btn-secondary">Voice Library</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#6</div>
+              <div class="tool-name">Retell AI</div>
+              <div class="productivity-badge productivity-medium">Voice Calls</div>
+            </div>
+            <p class="tool-description">AI-powered voice calling and conversation automation platform.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Voice Calls</span>
+              <span class="feature-tag">Conversation AI</span>
+              <span class="feature-tag">Automation</span>
+              <span class="feature-tag">Real-time</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="tool-btn btn-primary">Try Retell AI</a>
+              <a href="#" class="tool-btn btn-secondary">Voice Demo</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deployment & Infrastructure -->
+      <section class="tools-section" data-category="deployment">
+        <div class="category-header">
+          <div class="category-icon">🚀</div>
+          <div class="category-info">
+            <h2>Deployment & Infrastructure</h2>
+            <p class="category-description">Essential platforms for deploying and hosting applications</p>
+          </div>
+        </div>
+        
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#1</div>
+              <div class="tool-name">OpenRouter</div>
+              <div class="productivity-badge productivity-high">API Gateway</div>
+            </div>
+            <p class="tool-description">Unified API gateway for accessing multiple AI models through a single interface.</p>
+            <div class="tool-features">
+              <span class="feature-tag">API Gateway</span>
+              <span class="feature-tag">Multiple Models</span>
+              <span class="feature-tag">Unified Interface</span>
+              <span class="feature-tag">Cost Optimization</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://openrouter.ai" class="tool-btn btn-primary" target="_blank">Try OpenRouter</a>
+              <a href="#" class="tool-btn btn-secondary">API Docs</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#2</div>
+              <div class="tool-name">Groq Cloud</div>
+              <div class="productivity-badge productivity-high">Fast Inference</div>
+            </div>
+            <p class="tool-description">Ultra-fast AI inference platform with specialized hardware acceleration.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Fast Inference</span>
+              <span class="feature-tag">Hardware Acceleration</span>
+              <span class="feature-tag">Low Latency</span>
+              <span class="feature-tag">High Performance</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://groq.com" class="tool-btn btn-primary" target="_blank">Try Groq</a>
+              <a href="#" class="tool-btn btn-secondary">Performance</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#3</div>
+              <div class="tool-name">Vercel</div>
+              <div class="productivity-badge productivity-high">Frontend Deploy</div>
+            </div>
+            <p class="tool-description">Premier platform for frontend deployment with excellent developer experience.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Frontend</span>
+              <span class="feature-tag">Next.js</span>
+              <span class="feature-tag">Edge Network</span>
+              <span class="feature-tag">Git Integration</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://vercel.com" class="tool-btn btn-primary" target="_blank">Try Vercel</a>
+              <a href="#" class="tool-btn btn-secondary">Documentation</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#4</div>
+              <div class="tool-name">Netlify</div>
+              <div class="productivity-badge productivity-high">JAMstack</div>
+            </div>
+            <p class="tool-description">Powerful platform for JAMstack applications with continuous deployment.</p>
+            <div class="tool-features">
+              <span class="feature-tag">JAMstack</span>
+              <span class="feature-tag">CDN</span>
+              <span class="feature-tag">Forms</span>
+              <span class="feature-tag">Functions</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://netlify.com" class="tool-btn btn-primary" target="_blank">Try Netlify</a>
+              <a href="#" class="tool-btn btn-secondary">Features</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#5</div>
+              <div class="tool-name">Firebase</div>
+              <div class="productivity-badge productivity-high">Full Stack</div>
+            </div>
+            <p class="tool-description">Google's comprehensive platform for web and mobile app development.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Database</span>
+              <span class="feature-tag">Authentication</span>
+              <span class="feature-tag">Hosting</span>
+              <span class="feature-tag">Analytics</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://firebase.google.com" class="tool-btn btn-primary" target="_blank">Try Firebase</a>
+              <a href="#" class="tool-btn btn-secondary">Console</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-header">
+              <div class="tool-rank">#6</div>
+              <div class="tool-name">Render</div>
+              <div class="productivity-badge productivity-medium">Full Stack</div>
+            </div>
+            <p class="tool-description">Modern cloud platform for deploying full-stack applications with ease.</p>
+            <div class="tool-features">
+              <span class="feature-tag">Full Stack</span>
+              <span class="feature-tag">Auto Deploy</span>
+              <span class="feature-tag">Databases</span>
+              <span class="feature-tag">Static Sites</span>
+            </div>
+            <div class="tool-actions">
+              <a href="https://render.com" class="tool-btn btn-primary" target="_blank">Try Render</a>
+              <a href="#" class="tool-btn btn-secondary">Pricing</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="tools-section" data-category="apis">
+        <div class="category-header">
+          <div class="category-icon">🔌</div>
+          <div class="category-info">
+            <h2>Essential APIs for Development</h2>
+            <p class="category-description">Most used APIs by students and developers, ranked by utility</p>
+          </div>
+        </div>
+        
+        <div class="api-grid">
+          <div class="api-card">
+            <div class="api-name">OpenWeather API</div>
+            <div class="api-description">Comprehensive weather data and forecasting for applications</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">Unsplash API</div>
+            <div class="api-description">High-quality stock photos for web and mobile applications</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">JSONPlaceholder</div>
+            <div class="api-description">Fake REST API for testing and prototyping</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">REST Countries API</div>
+            <div class="api-description">Information about countries, currencies, and languages</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">News API</div>
+            <div class="api-description">Live news headlines and articles from various sources</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">YouTube Data API</div>
+            <div class="api-description">Access YouTube videos, channels, and playlist data</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">Spotify API</div>
+            <div class="api-description">Music streaming data and playlist management</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">PokeAPI</div>
+            <div class="api-description">Comprehensive Pokémon data for gaming applications</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">CoinGecko API</div>
+            <div class="api-description">Cryptocurrency prices and market data</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">NASA Open APIs</div>
+            <div class="api-description">Space data, images, and astronomical information</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">ReqRes</div>
+            <div class="api-description">Simple REST API for testing HTTP requests with user data simulation</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">RandomUser API</div>
+            <div class="api-description">Generate random user data for testing purposes with realistic profiles</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">OpenStreetMap API</div>
+            <div class="api-description">Open-source mapping data and geographical information services</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">Giphy API</div>
+            <div class="api-description">GIF search and integration for social applications and messaging</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">IPify API</div>
+            <div class="api-description">Simple IP address detection and geolocation services</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">IP Geolocation API</div>
+            <div class="api-description">Detailed IP-based location data with ISP and timezone information</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">MealDB API</div>
+            <div class="api-description">Recipe database with meal categories, ingredients, and cooking instructions</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">Universities API</div>
+            <div class="api-description">Global university database with contact information and web domains</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">Trivia API</div>
+            <div class="api-description">Quiz questions and trivia data for educational and entertainment apps</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">Fun Translation API</div>
+            <div class="api-description">Novelty text translations including Yoda, Pirate, and Shakespeare styles</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">Bored API</div>
+            <div class="api-description">Random activity suggestions to combat boredom with difficulty ratings</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">Numbers API</div>
+            <div class="api-description">Interesting facts about numbers, dates, and mathematical trivia</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">Dog CEO API</div>
+            <div class="api-description">Random dog images by breed with comprehensive breed database</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">Cat API</div>
+            <div class="api-description">Random cat images and facts for pet-related applications</div>
+          </div>
+          
+          <div class="api-card">
+            <div class="api-name">Genderize.io</div>
+            <div class="api-description">Gender prediction based on first names with probability scores</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <a href="index.html" class="logo-text">Venkat<span>.</span></a>
+      </p>
+      <p class="footer-description">
+        Curated collection of AI tools and platforms that power modern development workflows. 
+        Updated regularly with the latest innovations in artificial intelligence.
+      </p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Portfolio</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <p class="copyright">
+        &copy; 2025 <a href="#">Venkat Karthik</a>. All rights reserved
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Search functionality
+    const searchBox = document.getElementById('searchBox');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const toolsSections = document.querySelectorAll('.tools-section');
+    const toolCards = document.querySelectorAll('.tool-card, .api-card');
+
+    // Filter by category
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        const category = tab.dataset.category;
+        
+        // Show/hide sections
+        toolsSections.forEach(section => {
+          if (category === 'all' || section.dataset.category === category) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Search functionality
+    searchBox.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      
+      toolCards.forEach(card => {
+        const toolName = card.querySelector('.tool-name, .api-name')?.textContent.toLowerCase() || '';
+        const toolDescription = card.querySelector('.tool-description, .api-description')?.textContent.toLowerCase() || '';
+        const features = Array.from(card.querySelectorAll('.feature-tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+        
+        const matchesSearch = toolName.includes(searchTerm) || 
+                            toolDescription.includes(searchTerm) || 
+                            features.includes(searchTerm);
+        
+        card.style.display = matchesSearch ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
